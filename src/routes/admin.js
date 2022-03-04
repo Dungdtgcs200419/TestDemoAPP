@@ -17,20 +17,20 @@ router.get('/accounts/admin-Accounts', admin_account.admin);
 router.get('/logout', admin_account.logout);
 router.get('/accounts/:id/delete', admin_account.delete);
 router.get('/accounts/:id/edit', admin_account.edit);
-router.get('/account/change-password', adminLoginPanel.changpassword)
 
 //admin accounts (admin) [post]
 router.post('/accounts/admin-Accounts', admin_account.searchforAdminACC);
 router.post('/accounts/save', admin_account.save);
 router.post('/check', adminLoginPanel.check);
 router.post('/accounts/:id/update', admin_account.update);
-router.post('/account/change-password/update', adminLoginPanel.updatepassword)
+
 
 //user accounts (admin) [get]
 router.get('/accounts/user-Accounts', user_account.user);
 
 //user accounts (admin) [post]
 router.post('/accounts/user-Accounts', user_account.searchforUserACC);
+
 
 //catalog [get]
 router.get('/catalogs', catalog.show);
@@ -69,7 +69,9 @@ router.get('/OnGoing', transaction.ongoing);
 router.get('/Finished', transaction.finished);
 
 
-//Loginpanel [get]
+//Loginpanel [get] [post]
+router.get('/account/change-password', adminLoginPanel.changpassword)
+router.post('/account/change-password/update', adminLoginPanel.updatepassword)
 router.get('/', adminLoginPanel.login);
 
 
