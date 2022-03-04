@@ -23,12 +23,12 @@ class Admin_Account {
           }
         });
         //Render
-        res.render('accounts/admin_account', {
+        return res.render('accounts/admin_account', {
           layout: 'admin',
           title: 'Admin accounts',
           Admin_accounts,
           username: req.cookies.username
-        })
+        });
       })
       // .then(Admin_accounts => res.json(Admin_accounts))
       .catch(next);

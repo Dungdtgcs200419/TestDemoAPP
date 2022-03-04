@@ -44,7 +44,7 @@ class AdminLoginPanel {
 
     
 
-    async check(req, res, next) {
+    check(req, res, next) {
         const formData = req.body;
 
         Admin_account.findOne({username: formData.username})
