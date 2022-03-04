@@ -11,22 +11,26 @@ const transaction = require('../app/controllers/Admin_Transaction');
 
 
 
-//admin accounts [get]
+//admin accounts (admin) [get]
 router.get('/accounts/add', admin_account.add);
 router.get('/accounts/admin-Accounts', admin_account.admin);
 router.get('/logout', admin_account.logout);
 router.get('/accounts/:id/delete', admin_account.delete);
 router.get('/accounts/:id/edit', admin_account.edit);
-router.get('/accounts/user-Accounts', user_account.user);
 router.get('/account/change-password', adminLoginPanel.changpassword)
 
-//admin accounts [post]
+//admin accounts (admin) [post]
 router.post('/accounts/admin-Accounts', admin_account.searchforAdminACC);
-router.post('/accounts/user-Accounts', user_account.searchforUserACC);
 router.post('/accounts/save', admin_account.save);
 router.post('/check', adminLoginPanel.check);
 router.post('/accounts/:id/update', admin_account.update);
 router.post('/account/change-password/update', adminLoginPanel.updatepassword)
+
+//user accounts (admin) [get]
+router.get('/accounts/user-Accounts', user_account.user);
+
+//user accounts (admin) [post]
+router.post('/accounts/user-Accounts', user_account.searchforUserACC);
 
 //catalog [get]
 router.get('/catalogs', catalog.show);
@@ -52,17 +56,17 @@ router.post('/products/:id/update', product.update);
 
 //transaction [get]
 router.get('/transaction', transaction.show);
+
+//transaction [post]
+router.post('/transaction', transaction.searchforTrans);
+
+//Orders [get]
 router.get('/orders', transaction.showorders);
 router.get('/orders/:trans_id', transaction.specifictransorders);
 router.get('/orders/:trans_id/:product_id/updateStatus', transaction.updateStatus);
 router.get('/waitingOrders', transaction.waiting);
 router.get('/OnGoing', transaction.ongoing);
 router.get('/Finished', transaction.finished);
-
-//transaction [post]
-router.post('/transaction', transaction.searchforTrans);
-
-
 
 
 //Loginpanel [get]
