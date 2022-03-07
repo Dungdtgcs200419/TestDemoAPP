@@ -10,6 +10,9 @@ const { transaction } = require('./SiteController');
 class Admin_Transaction {
 
     show(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.find({})
             .then(transactions => {
                 res.render('transaction/transaction', {
@@ -22,6 +25,9 @@ class Admin_Transaction {
     }
 
     specifictransorders(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.findOne({
             _id: req.params.trans_id,
         })
@@ -51,6 +57,9 @@ class Admin_Transaction {
     }
 
     updateStatus(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.findByIdAndUpdate(req.params.trans_id)
             .then(transaction => {
                 transaction = moongoseToObject(transaction);
@@ -72,6 +81,9 @@ class Admin_Transaction {
     }
 
     showorders(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.find({})
             .then(transactions => {
                 transactions =  multipleMongooseToObject(transactions);
@@ -102,6 +114,9 @@ class Admin_Transaction {
     }
 
     waiting(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.find({})
             .then(transactions => {
                 transactions =  multipleMongooseToObject(transactions);
@@ -130,6 +145,9 @@ class Admin_Transaction {
     }
 
     ongoing(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.find({})
             .then(transactions => {
                 transactions =  multipleMongooseToObject(transactions);
@@ -158,6 +176,9 @@ class Admin_Transaction {
     }
 
     finished(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.find({})
             .then(transactions => {
                 transactions =  multipleMongooseToObject(transactions);
@@ -186,6 +207,9 @@ class Admin_Transaction {
     }
 
     searchforTrans(req, res, next) {
+        if(typeof req.cookies.username == 'undefined') {
+            res.redirect('/admin');
+          };
         Transaction.find({
             $or: [
                 {
